@@ -4,16 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "preinstall": "node scripts/print-env.js",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@optimai-network-dev/node-api-service": "git+https://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@github.com/OptimaiNetwork/node-api-service.git",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "api-services": "git+https://github.com/OptimaiNetwork/node-api-service.git#d3be389"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
@@ -28,7 +27,7 @@
     "typescript-eslint": "^8.22.0",
     "vite": "^6.1.0"
   },
-  "packageManager": "pnpm@9.6.0",
+  "packageManager": "yarn@1.22.22",
   "engines": {
     "node": ">=22.0.0"
   }

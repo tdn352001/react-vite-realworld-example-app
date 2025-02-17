@@ -1,4 +1,4 @@
-import { authService } from 'api-services'
+import { authService } from '@optimai-network-dev/node-api-service'
 import { useEffect, useState } from 'react'
 import './App.css'
 import reactLogo from './assets/react.svg'

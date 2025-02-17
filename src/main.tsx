@@ -1,4 +1,4 @@
-import { configureAxios } from 'api-services'
+import { configureAxios } from '@optimai-network-dev/node-api-service'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
