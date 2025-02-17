@@ -3,7 +3,7 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches:
-      - main  # Deploy when pushing to the main branch
+      - main
 
 jobs:
   deploy:
@@ -28,6 +28,18 @@ jobs:
           echo ".npmrc content:"
           cat .npmrc
 
+      - name: Modify package.json
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          # Replace the git URL with authentication token
+          sed -i 's#git+https://github.com/OptimaiNetwork/node-api-service.git#git+https://${{ secrets.GH_PAT }}@github.com/OptimaiNetwork/node-api-service.git#' package.json
+          
+      - name: Check modified package.json
+        run: |
+          echo "Content of package.json after modification:"
+          cat package.json
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
@@ -47,14 +59,4 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
         run: pnpm install
 
-      - name: Build Project
-        run: pnpm run build
-
-      - name: Upload to Cloudflare Pages
-        uses: cloudflare/pages-action@v1.5.0
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
-          directory: dist  # Change if your build output is different
-          wranglerVersion: '3'
+      # ... rest of your workflow ...
