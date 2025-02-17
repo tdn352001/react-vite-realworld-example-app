@@ -12,6 +12,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Debug Environment Variables
+        run: |
+          echo "GH_PAT exists: ${{ secrets.GH_PAT != '' }}"
+          echo "NODE_AUTH_TOKEN exists: ${{ secrets.GH_PAT != '' }}"
+          echo "All Environment Variables:"
+          env
+          echo "NPM Config:"
+          npm config list
+          echo "Current Directory Content:"
+          ls -la
+          echo ".npmrc content:"
+          cat .npmrc
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
