@@ -9,7 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository with PAT
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup pnpm
@@ -22,8 +22,13 @@ jobs:
         with:
           node-version: 'lts/*'
           cache: 'pnpm'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@OptimaiNetwork'
 
       - name: Install Dependencies
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
         run: pnpm install
 
       - name: Build Project
