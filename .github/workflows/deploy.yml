@@ -13,9 +13,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Debug Environment Variables
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           echo "GH_PAT exists: ${{ secrets.GH_PAT != '' }}"
-          echo "NODE_AUTH_TOKEN exists: ${{ secrets.GH_PAT != '' }}"
+          echo "GH_PAT length: ${#GH_PAT}"
+          echo "First 4 chars of GH_PAT: ${GH_PAT:0:4}"
           echo "All Environment Variables:"
           env
           echo "NPM Config:"
