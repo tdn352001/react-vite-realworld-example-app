@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@optimai-network-dev/node-api-service": "git+https://github.com/OptimaiNetwork/node-api-service.git#d3be389",
+    "@optimai-network-dev/node-api-service": "https://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@github.com/OptimaiNetwork/node-api-service.git",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
